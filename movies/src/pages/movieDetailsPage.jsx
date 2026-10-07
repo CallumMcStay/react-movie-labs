@@ -5,6 +5,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { getMovie, getMovieImages } from "../api/tmdb-api";
 
 const MoviePage = (props) => {
   const { id } = useParams();
@@ -12,26 +13,15 @@ const MoviePage = (props) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`,
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((movie) => {
-        setMovie(movie);
-      });
+    getMovie(id).then((movie) => {
+      setMovie(movie);
+    });
   }, [id]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`,
-    )
-      .then((res) => res.json())
-      .then((json) => json.posters)
-      .then((images) => {
-        setImages(images);
-      });
+    getMovieImages(id).then((images) => {
+      setImages(images);
+    });
   }, []);
 
   return (

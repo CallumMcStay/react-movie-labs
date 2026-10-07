@@ -18,9 +18,9 @@ import Avatar from "@mui/material/Avatar";
 export default function MovieCard(props) {
   const movie = props.movie;
 
-  const handleAddToFavorites = (e) => {
+  const handleAddToFavorite = (e) => {
     e.preventDefault();
-    props.selectFavorite(movie);
+    props.selectFavorite(movie.id);
   };
 
   return (
@@ -39,7 +39,6 @@ export default function MovieCard(props) {
           </Typography>
         }
       />
-
       <CardMedia
         sx={{ height: 500 }}
         image={
