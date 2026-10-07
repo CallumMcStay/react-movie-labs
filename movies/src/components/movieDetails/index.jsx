@@ -20,8 +20,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ( props) => {
-    const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -59,7 +58,7 @@ const MovieDetails = ( props) => {
         />
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
-            <Fab
+      <Fab
         color="secondary"
         variant="extended"
         onClick={() =>setDrawerOpen(true)}
@@ -67,8 +66,7 @@ const MovieDetails = ( props) => {
           position: 'fixed',
           bottom: '1em',
           right: '1em'
-        }}
-      >
+        }}>
         <NavigationIcon />
         Reviews
       </Fab>
@@ -78,4 +76,5 @@ const MovieDetails = ( props) => {
       </>
   );
 };
+
 export default MovieDetails ;
