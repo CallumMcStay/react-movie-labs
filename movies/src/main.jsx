@@ -12,7 +12,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
 import WatchListPage from './pages/watchListPage';
-import PopularMoviesPage from './pages/topRatedMoviesPage';
 import TopRateMoviesPage from "./pages/topRatedMoviesPage";
 
 const queryClient = new QueryClient({
