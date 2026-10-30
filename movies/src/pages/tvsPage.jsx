@@ -31,7 +31,7 @@ const TvsPage = (props) => {
       name='Discover Tv Shows'
       tvs={tvs}
       action={(tvs) => {
-        return <AddToFavoritesIcon movie={tvs} />
+        return <AddToFavoritesIcon tvs={tvs} />
       }}
     />
   );

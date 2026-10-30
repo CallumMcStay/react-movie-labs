@@ -25,7 +25,7 @@ const SiteHeader = () => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Tvs", path: "/tvs"},
+    { label: "Tv Shows", path: "/tvs"},
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Watch List", path: "/movies/watchList" },
@@ -49,7 +49,7 @@ const SiteHeader = () => {
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
+            All you ever wanted to know about Movies & Tv Shows!
           </Typography>
             {isMobile ? (
               <>
