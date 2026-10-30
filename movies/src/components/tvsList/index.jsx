@@ -9,7 +9,7 @@ const TvsList = (props) => {
       size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2 }}
       sx={{ padding: "20px" }}
     >
-      <Tvs key={t.id} movie={t} action={props.action} />
+      <Tvs key={t.id} tvs={t} action={props.action} />
     </Grid>
   ));
   return tvsCards;

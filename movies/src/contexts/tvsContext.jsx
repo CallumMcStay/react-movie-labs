@@ -47,7 +47,7 @@ const TvsContextProvider = (props) => {
   }
 
   return (
-    <TvsContextProvider.Provider
+    <TvsContext.Provider
       value={{
         favorites,
         watchList,
@@ -59,8 +59,8 @@ const TvsContextProvider = (props) => {
       }}
     >
       {props.children}
-    </TvsContextProvider.Provider>
+    </TvsContext.Provider>
   );
 };
 
-export default MoviesContextProvider;
+export default TvsContextProvider;

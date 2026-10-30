@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Header from "../headerTvList";
 import FilterCard from "../filterTvsCard";
-import MovieList from "../movieList";
+import TvsList from "../tvsList";
 import Grid from "@mui/material/Grid";
 
 function TvListPageTemplate({ tvs, name, action }) {
+  console.log(tvs)
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
@@ -39,7 +40,7 @@ function TvListPageTemplate({ tvs, name, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList action={action} movies={displayedTvs}></MovieList>
+        <TvsList action={action} tvs={displayedTvs}></TvsList>
       </Grid>
     </Grid>
   );
