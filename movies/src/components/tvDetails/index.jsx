@@ -8,6 +8,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
+import TvReviews from "../tvReviews"
 
 const root = {
   display: "flex",
@@ -80,6 +81,7 @@ const TvDetails = ({ tv }) => {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
+        <TvReviews tv={tv} />
       </Drawer>
     </>
   );
