@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
+import GroupsIcon from '@mui/icons-material/Groups';
 import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
@@ -45,14 +45,14 @@ const TvDetails = ({ tv }) => {
       <Paper component="ul" sx={{ ...root }}>
         <Chip icon={<AccessTimeIcon />} label={`${tv.number_of_seasons} min.`} />
         <Chip
-          icon={<MonetizationIcon />}
+          icon={<GroupsIcon />}
           label={`${tv.popularity.toLocaleString()}`}
         />
         <Chip
           icon={<StarRate />}
           label={`${tv.vote_average} (${tv.vote_count})`}
         />
-        <Chip label={`Released: ${tv.release_date}`} />
+        <Chip label={`Released: ${tv.first_air_date}`} />
       </Paper>
       <Paper component="ul" sx={{ ...root }}>
         <Chip label="Production Countries" sx={{ ...chip }} color="primary" />
