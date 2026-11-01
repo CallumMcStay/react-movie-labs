@@ -1,14 +1,14 @@
 import React from "react";
 import { useLocation } from "react-router";
-import PageTemplate from "../components/templateMoviePage";
+import PageTemplate from "../components/templateTvPage";
 import TvReview from "../components/tvReview";
 
 const TvReviewPage = (props) => {
   let location = useLocation();
-  const {movie, review} = location.state;
+  const {tv, review} = location.state;
   
   return (
-    <PageTemplate movie={movie}>
+    <PageTemplate tv={tv}>
       <TvReview review={review} />
     </PageTemplate>
   );

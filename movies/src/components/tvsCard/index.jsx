@@ -59,7 +59,7 @@ export default function TvsCards({ tvs, action }) {
           <Grid size={{ xs: 6 }}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {tvs.release_date}
+              {tvs.first_air_date}
             </Typography>
           </Grid>
           <Grid size={{ xs: 6 }}>
@@ -73,7 +73,7 @@ export default function TvsCards({ tvs, action }) {
       <CardActions disableSpacing>
         {action(tvs)}
 
-        <Link to={`/movies/${tvs.id}`}>
+        <Link to={`/tvs/${tvs.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
