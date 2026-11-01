@@ -9,7 +9,7 @@ import Spinner from "../spinner";
 
 const TemplateTvPage = ({ tv, children }) => {
   const { data, error, isPending, isError } = useQuery({
-    queryKey: ["images", { id: tv.id }],
+    queryKey: ["tvImages", { id: tv.id }],
     queryFn: getTvImages,
   });
 
