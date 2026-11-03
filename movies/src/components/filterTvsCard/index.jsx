@@ -51,6 +51,10 @@ export default function FilterTvCard(props) {
     handleChange(e, "genre", e.target.value);
   };
 
+  const handleRatingChange = (e) => {
+    handleChange(e, "rating", e.target.value)
+  }
+
   return (
     <Card
       sx={{
@@ -88,6 +92,22 @@ export default function FilterTvCard(props) {
                 </MenuItem>
               );
             })}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ ...formControl }}>
+          <InputLabel id="rating-label">Rating</InputLabel>
+          <Select
+            labelId="rating-label"
+            id="rating-select"
+            defaultValue=""
+            value={props.ratingFilter}
+            onChange={handleRatingChange}
+          >
+            <MenuItem value="0">Any</MenuItem>
+            <MenuItem value="5">5+</MenuItem>
+            <MenuItem value="6">6+</MenuItem>
+            <MenuItem value="7">7+</MenuItem>
+            <MenuItem value="8">8+</MenuItem>
           </Select>
         </FormControl>
       </CardContent>

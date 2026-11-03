@@ -8,6 +8,7 @@ function TvListPageTemplate({ tvs, name, action }) {
   console.log(tvs)
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [ratingFilter, setRatingFilter] = useState("0");
   const genreId = Number(genreFilter);
 
   let displayedTvs = tvs
@@ -16,10 +17,14 @@ function TvListPageTemplate({ tvs, name, action }) {
     })
     .filter((t) => {
       return genreId > 0 ? t.genre_ids.includes(genreId) : true;
+    })
+    .filter((m) => {
+      return m.vote_average >= Number(ratingFilter) 
     });
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
+    else if (type === "rating") setRatingFilter(value);
     else setGenreFilter(value);
   };
 
@@ -38,6 +43,7 @@ function TvListPageTemplate({ tvs, name, action }) {
             onUserInput={handleChange}
             titleFilter={nameFilter}
             genreFilter={genreFilter}
+            ratingFilter={ratingFilter}
           />
         </Grid>
         <TvsList action={action} tvs={displayedTvs}></TvsList>
