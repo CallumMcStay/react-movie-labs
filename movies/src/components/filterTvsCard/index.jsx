@@ -17,7 +17,7 @@ import Spinner from '../spinner';
 const formControl = {
   margin: 1,
   minWidth: "90%",
-  backgroundColor: "rgb(255, 255, 255)",
+  backgroundColor: "background.default",
 };
 
 export default function FilterTvCard(props) {
@@ -54,7 +54,7 @@ export default function FilterTvCard(props) {
   return (
     <Card
       sx={{
-        backgroundColor: "rgb(204, 204, 0)",
+        backgroundColor: "background.paper",
       }}
       variant="outlined"
     >
