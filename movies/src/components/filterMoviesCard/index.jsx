@@ -13,6 +13,7 @@ import img from "../../images/pexels-dziana-hasanbekava-5480827.jpg";
 import React, { useState, useEffect } from "react";
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../spinner';
+import Rating from '@mui/material/Rating';
 
 const formControl = {
   margin: 1,
@@ -51,8 +52,8 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "genre", e.target.value);
   };
 
-  const handleRatingChange = (e) => {
-    handleChange(e, "rating", e.target.value)
+  const handleRatingChange = (e, newValue) => {
+    handleChange(e, "rating", (newValue || 0))
   }
 
   return (
@@ -95,20 +96,15 @@ export default function FilterMoviesCard(props) {
           </Select>
         </FormControl>
         <FormControl sx={{ ...formControl }}>
-          <InputLabel id="rating-label">Rating</InputLabel>
-          <Select
-            labelId="rating-label"
-            id="rating-select"
-            defaultValue=""
-            value={props.ratingFilter}
+          <Typography component="legend">Minimum Rating</Typography>
+          <Rating
+            name="rating-filter"
+            max={10}
+            value={Number(props.ratingFilter)}
+            precision={1}
             onChange={handleRatingChange}
           >
-            <MenuItem value="0">Any</MenuItem>
-            <MenuItem value="5">5+</MenuItem>
-            <MenuItem value="6">6+</MenuItem>
-            <MenuItem value="7">7+</MenuItem>
-            <MenuItem value="8">8+</MenuItem>
-          </Select>
+          </Rating>
         </FormControl>
       </CardContent>
       <CardMedia sx={{ height: 300 }} image={img} title="Filter" />
