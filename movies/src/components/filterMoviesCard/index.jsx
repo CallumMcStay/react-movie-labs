@@ -14,6 +14,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../spinner';
 import Rating from '@mui/material/Rating';
+import Autocomplete from "@mui/material/Autocomplete";
 
 const formControl = {
   margin: 1,
@@ -68,14 +69,14 @@ export default function FilterMoviesCard(props) {
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
-        <TextField
+        <Autocomplete
           sx={{ ...formControl }}
-          id="filled-search"
-          label="Search field"
-          type="search"
-          variant="filled"
-          value={props.titleFilter}
-          onChange={handleTextChange}
+          options={props.titles || []}
+          inputValue={props.titleFilter}
+          onInputChange={(e, value) => props.onUserInput("name", value)}
+          renderInput={(params) => (
+          <TextField {...params} label="Search field" variant="filled" />
+        )}
         />
         <FormControl sx={{ ...formControl }}>
           <InputLabel id="genre-label">Genre</InputLabel>

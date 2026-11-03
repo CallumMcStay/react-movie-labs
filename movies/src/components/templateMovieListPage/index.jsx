@@ -9,6 +9,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("0");
   const genreId = Number(genreFilter);
+  const titles = [...new Set(movies.map((m) => m.title))];
 
   let displayedMovies = movies
     .filter((m) => {
@@ -44,6 +45,7 @@ function MovieListPageTemplate({ movies, title, action }) {
             titleFilter={nameFilter}
             genreFilter={genreFilter}
             ratingFilter={ratingFilter}
+            titles={titles}
           />
         </Grid>
         <MovieList action={action} movies={displayedMovies}></MovieList>
