@@ -9,6 +9,9 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews";
+import { Link } from "react-router";
+import Button from "@mui/material/Button";
+import ActorList from "../actorList";
 
 const root = {
   display: "flex",
@@ -20,7 +23,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, actors }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -63,6 +66,15 @@ const MovieDetails = ({ movie }) => {
           </li>
         ))}
       </Paper>
+
+      <ActorList actors={actors}></ActorList>
+
+      <Link to={`/movies/${movie.id}`}>
+          <Button variant="outlined" size="medium" color="primary">
+            More Info ...
+          </Button>
+        </Link>
+
       <Fab
         color="secondary"
         variant="extended"

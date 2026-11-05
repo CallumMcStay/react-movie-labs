@@ -20,8 +20,7 @@ function MovieListPageTemplate({ movies, title, action }) {
     })
     .filter((m) => {
       return m.vote_average >= Number(ratingFilter) 
-    })
-    ;
+    });
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
