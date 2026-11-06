@@ -69,12 +69,6 @@ const MovieDetails = ({ movie, actors }) => {
 
       <ActorList actors={actors}></ActorList>
 
-      <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info ...
-          </Button>
-        </Link>
-
       <Fab
         color="secondary"
         variant="extended"

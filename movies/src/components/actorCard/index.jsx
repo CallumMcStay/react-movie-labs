@@ -53,7 +53,7 @@ export default function ActorCard({ actor }) {
           </Grid>
         </Grid>
       </CardContent>
-        <Link to={`/movies/${actor.id}`}>
+        <Link to={`/actors/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
