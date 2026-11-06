@@ -277,9 +277,9 @@ export const getUpcomingMovies = () => {
     });
 };
 
-export const getNowPlayingMovies = () => {
+export const getNowPlayingMovies = (page = 1) => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=${page}`,
   )
     .then((response) => {
       if (!response.ok) {
