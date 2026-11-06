@@ -11,8 +11,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from "../../images/pexels-dziana-hasanbekava-5480827.jpg";
 import React, { useState, useEffect } from "react";
-import { useQuery } from '@tanstack/react-query';
-import Spinner from '../spinner';
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../spinner";
+import Rating from '@mui/material/Rating';
 
 const formControl = {
   margin: 1,
@@ -21,8 +22,8 @@ const formControl = {
 };
 
 export default function FilterTvCard(props) {
-    const { data, error, isPending, isError } = useQuery({
-    queryKey: ['tvsGenres'],
+  const { data, error, isPending, isError } = useQuery({
+    queryKey: ["tvsGenres"],
     queryFn: getTvsGenres,
   });
 
@@ -34,13 +35,13 @@ export default function FilterTvCard(props) {
     return <h1>{error.message}</h1>;
   }
   const genres = data.genres;
-  if (genres[0].name !== "All"){
+  if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
   }
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); 
+    props.onUserInput(type, value);
   };
 
   const handleTextChange = (e, props) => {
@@ -52,8 +53,8 @@ export default function FilterTvCard(props) {
   };
 
   const handleRatingChange = (e) => {
-    handleChange(e, "rating", e.target.value)
-  }
+    handleChange(e, "rating", e.target.value);
+  };
 
   return (
     <Card
@@ -95,20 +96,16 @@ export default function FilterTvCard(props) {
           </Select>
         </FormControl>
         <FormControl sx={{ ...formControl }}>
-          <InputLabel id="rating-label">Rating</InputLabel>
-          <Select
-            labelId="rating-label"
-            id="rating-select"
+          <Typography component="legend">Minimum Rating</Typography>{" "}
+          <Rating
+            name="rating-filter"
+            max={10}
             defaultValue=""
-            value={props.ratingFilter}
+            value={Number(props.ratingFilter)}
+            precision={1}
             onChange={handleRatingChange}
           >
-            <MenuItem value="0">Any</MenuItem>
-            <MenuItem value="5">5+</MenuItem>
-            <MenuItem value="6">6+</MenuItem>
-            <MenuItem value="7">7+</MenuItem>
-            <MenuItem value="8">8+</MenuItem>
-          </Select>
+          </Rating>
         </FormControl>
       </CardContent>
       <CardMedia sx={{ height: 300 }} image={img} title="Filter" />
