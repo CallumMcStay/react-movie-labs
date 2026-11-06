@@ -6,6 +6,7 @@ import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
+import Box from '@mui/material/Box';
 
 const HomePage = (props) => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const HomePage = (props) => {
   const page = parseInt(query.get("page") || "1", 10);
 
   const { data, error, isPending, isError } = useQuery({
-    queryKey: ["discover", {page}],
+    queryKey: ["discover", { page }],
     queryFn: () => getMovies(page),
   });
 
@@ -34,27 +35,29 @@ const HomePage = (props) => {
 
   return (
     <>
-    <PageTemplate
-      title="Discover Movies"
-      movies={movies}
-      action={(movie) => {
-        return <AddToFavoritesIcon movie={movie} />;
-      }}
-    />
-    <Pagination
-      page={page}
-      count={Math.min(data.total_pages,500)}
-      color="primary"
-      renderItem={(item) => (
-        <PaginationItem
-        component={Link}
-        to={`${location.pathname}${item.page === 1 ? "" : `?page=${item.page}`}`}
-        {...item}
+      <PageTemplate
+        title="Discover Movies"
+        movies={movies}
+        action={(movie) => {
+          return <AddToFavoritesIcon movie={movie} />;
+        }}
       />
-      )}
-      />
-      </>
+      <Box sx={{ display: "flex", justifyContent: "center", padding: 3 }}>
+        <Pagination
+          page={page}
+          count={Math.min(data.total_pages, 500)}
+          color="primary"
+          renderItem={(item) => (
+            <PaginationItem
+              component={Link}
+              to={`${location.pathname}${item.page === 1 ? "" : `?page=${item.page}`}`}
+              {...item}
+            />
+          )}
+        />
+      </Box>
+    </>
   );
 };
-      
+
 export default HomePage;
