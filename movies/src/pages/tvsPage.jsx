@@ -3,12 +3,19 @@ import PageTemplate from '../components/templateTvListPage';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import Box from '@mui/material/Box';
+import { Link, useLocation } from "react-router";
 
 const TvsPage = (props) => {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const page = parseInt(query.get("page") || "1", 10);
 
   const { data, error, isPending, isError  } = useQuery({
-    queryKey: ['discoverTvs'],
-    queryFn: getTvs,
+    queryKey: ['discoverTvs', {page}],
+    queryFn: () => getTvs(page),
   })
   
   if (isPending) {
@@ -27,13 +34,29 @@ const TvsPage = (props) => {
   const addToFavorites = (tvsId) => true 
 
   return (
+    <>
     <PageTemplate
       name='Discover Tv Shows'
       tvs={tvs}
       action={(tvs) => {
         return <AddToFavoritesIcon tvs={tvs} />
       }}
-    />
+      />
+       <Box sx={{ display: "flex", justifyContent: "center", padding: 3 }}>
+        <Pagination
+          page={page}
+          count={Math.min(data.total_pages, 500)}
+          color="primary"
+          renderItem={(item) => (
+            <PaginationItem
+              component={Link}
+              to={`${location.pathname}${item.page === 1 ? "" : `?page=${item.page}`}`}
+              {...item}
+            />
+          )}
+        />
+      </Box>
+    </>
   );
 };
 export default TvsPage;

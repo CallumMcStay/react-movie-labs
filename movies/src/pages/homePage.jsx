@@ -1,5 +1,5 @@
 import { getMovies } from "../api/tmdb-api";
-import { Link, MemoryRouter, Route, Routes, useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../components/spinner";
