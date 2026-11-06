@@ -2,7 +2,7 @@ import { getTvs } from "../api/tmdb-api";
 import PageTemplate from '../components/templateTvListPage';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner';
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import AddToTvFavoritesIcon from '../components/cardIcons/addToTvFavorites'
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Box from '@mui/material/Box';
@@ -39,7 +39,7 @@ const TvsPage = (props) => {
       name='Discover Tv Shows'
       tvs={tvs}
       action={(tvs) => {
-        return <AddToFavoritesIcon tvs={tvs} />
+        return <AddToTvFavoritesIcon tvs={tvs} />
       }}
       />
        <Box sx={{ display: "flex", justifyContent: "center", padding: 3 }}>

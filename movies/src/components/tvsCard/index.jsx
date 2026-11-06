@@ -17,9 +17,9 @@ import { useContext } from "react";
 import { TvsContext } from "../../contexts/tvsContext";
 
 export default function TvsCards({ tvs, action }) {
-  const { favorites, addToFavorites } = useContext(TvsContext);
+  const { favorites: tvFavorites, addToTvFavorites } = useContext(TvsContext);
 
-  if (favorites.find((id) => id === tvs.id)) {
+  if (tvFavorites.find((id) => id === tvs.id)) {
     tvs.favorite = true;
   } else {
     tvs.favorite = false;
@@ -27,7 +27,7 @@ export default function TvsCards({ tvs, action }) {
 
   const handleAddToFavorite = (e) => {
     e.preventDefault();
-    addToFavorites(tvs);
+    addToTvFavorites(tvs);
   };
 
   return (
